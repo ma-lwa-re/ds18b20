@@ -46,6 +46,8 @@
 #define TEMP_11_BIT 0x5F // 11 bit
 #define TEMP_12_BIT 0x7F // 12 bit
 
+#define INVALID_VALUE	0xFFFF
+
 uint8_t DS_GPIO;
 uint8_t init=0;
 uint8_t bitResolution=12;
@@ -308,10 +310,10 @@ float ds18b20_get_temp(void) {
         temp=(float)(temp1+(temp2*256))/16;
         return temp;
       }
-      else{return 0;}
+      else{return INVALID_VALUE;}
 
   }
-  else{return 0;}
+  else{return INVALID_VALUE;}
 }
 
 void ds18b20_init(int GPIO) {
